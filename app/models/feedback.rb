@@ -2,7 +2,7 @@ class Feedback < ApplicationRecord
     before_create :sanitize
     after_create :send_tweet
 
-    validates_presence_of :recipient_handle, text
+    validates_presence_of :recipient_handle, :text
     validates_length_of :text, minimum: 1, maximum: 250
 
     def sanitize

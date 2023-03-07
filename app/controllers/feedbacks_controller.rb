@@ -1,8 +1,9 @@
 class FeedbacksController < ApplicationController
   def create
-    Feedback.create(feedback_params)
-    # puts "WOULD SEND TWEET: #{feedback_params[:text]}"
-    # TwitterService.tweet!(feedback_params[:text])
+    feedback = Feedback.create(feedback_params)
+    session[:tweet_url] = feedback.tweet_url
+    
+    redirect_to root_path
   end
 
   private
